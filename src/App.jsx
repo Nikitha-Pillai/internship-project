@@ -8,6 +8,7 @@ import Library from './component/Library';
 
 import Login from './component/Login';
 import SignUp from './component/SignUp';
+import AccordionTransition from './component/AccordionTransition';
 
 
 
@@ -28,6 +29,8 @@ function App() {
           <Route path='/see' element={<Library/>} />
           <Route path='/signup' element={<SignUp/>} />
           <Route path='/login' element={<Login/>} />
+          <Route path="/accordion-transition" element={<AccordionTransition />} />
+          
         
         </Routes>
        </>

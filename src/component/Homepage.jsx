@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Box, CardContent, Typography, Button, IconButton, CardMedia } from '@mui/material';
 import { Favorite as FavoriteIcon } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
 import bannerImage1 from '../assets/banner1.png'; // Ensure this path is correct
 import bannerImage2 from '../assets/banner2.png'; // Ensure this path is correct
@@ -9,6 +10,7 @@ import bannerImage3 from '../assets/banner3.png'; // Ensure this path is correct
 const Homepage = () => {
   const [isFavorited, setIsFavorited] = useState(false);
   const [bannerIndex, setBannerIndex] = useState(0);
+  const navigate = useNavigate();
 
   const initialRows = [
     { Book_name: 'Harry Potter', Author: 'JK Rowling', Status: 'Available', Image: 'https://m.media-amazon.com/images/I/81q77Q39nEL._AC_UF1000,1000_QL80_.jpg' },
@@ -28,14 +30,17 @@ const Homepage = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setBannerIndex((prevIndex) => (prevIndex + 1) % bannerImages.length);
-    }, 5000); // 60000 milliseconds = 1 minute
+    }, 5000); // 5000 milliseconds = 5 seconds
 
     return () => clearInterval(interval);
   }, []);
 
-  const handleRentClick = () => {
-    // Handle rent button click logic here
-    console.log('Rent button clicked');
+  const handleRentClick = (index) => {
+    if (index === 0) {
+      navigate('/accordion-transition');
+    } else {
+      console.log('Rent button clicked for', rows[index].Book_name);
+    }
   };
 
   const handleFavoriteClick = () => {
@@ -78,7 +83,7 @@ const Homepage = () => {
               <Typography variant="body1" color="text.secondary" component="div" sx={{ mt: 1 }}>
                 Status: {row.Status}
               </Typography>
-              <Button variant="contained" color="primary" onClick={handleRentClick} sx={{ mt: 2, '&:focus': { outline: 'none' } }}>
+              <Button variant="contained" color="primary" onClick={() => handleRentClick(index)} sx={{ mt: 2, '&:focus': { outline: 'none' } }}>
                 See Details
               </Button>
               <Box sx={{ display: 'flex', alignItems: 'center', mt: 2 }}>
