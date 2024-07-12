@@ -1,0 +1,82 @@
+/* Login body styles */
+.login-body {
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Full viewport height */
+    overflow-y: auto; /* Allow vertical scrolling */
+    background-image: url('https://media.istockphoto.com/id/1816810090/photo/3d-rendering-magic-library.webp?b=1&s=170667a&w=0&k=20&c=R5_fGd9iA8aKWAU2eTuB2XJlvqhuYpiX8hI7b-gc6BU=');
+    background-size: cover; /* Cover entire container */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+}
+
+/* Login container styles */
+.login-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    margin-top: 150px;
+}
+
+/* Input, button, and other styles remain as you have defined */
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center form items horizontally */
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: black;
+    text-align: center;
+    font-weight: bold; /* Added bold font weight */
+}
+
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+label {
+    margin-bottom: 5px;
+    text-align: left; /* Align labels to the left */
+    color: black;
+}
+
+input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-width: 300px; /* Adjust max-width to your preference */
+    text-align: left; /* Align input text to the left */
+}
+
+.loginbutton {
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; /* Ensure button takes full width */
+    max-width: 300px; /* Adjust max-width to your preference */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.error {
+    color: rgb(0, 0, 0);
+    margin-bottom: 10px;
+    text-align: center;
+    width: 100%; /* Ensure error message takes full width */
+    max-width: 300px; /* Adjust max-width to your preference */
+}
