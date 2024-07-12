@@ -5,8 +5,11 @@ import Navbar from './component/Navbar';
 import Homepage from './component/Homepage';
 import Profile from './component/Profile';
 import Library from './component/Library';
-import Firstpage from './component/Firstpage';
+
 import Login from './component/Login';
+import SignUp from './component/SignUp';
+
+
 
 
 
@@ -23,7 +26,9 @@ function App() {
         <Route path='/' element={<Homepage />} />
          <Route path='/edit' element={<Profile />} />
           <Route path='/see' element={<Library/>} />
+          <Route path='/signup' element={<SignUp/>} />
           <Route path='/login' element={<Login/>} />
+        
         </Routes>
        </>
      </Router>

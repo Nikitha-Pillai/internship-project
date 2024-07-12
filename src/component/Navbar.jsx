@@ -22,9 +22,14 @@ const NavBar = () => {
   };
 
   const handleLogoutClick = () => {
+    navigate('/signup'); // Navigate to Login.jsx
+    handleCloseUserMenu();
+  };
+  const handleLoginClick = () => {
     navigate('/login'); // Navigate to Login.jsx
     handleCloseUserMenu();
   };
+
 
   const handleLibraryClick = () => {
     navigate('/see');
@@ -85,7 +90,8 @@ const NavBar = () => {
           >
             <MenuItem onClick={handleProfileClick}>My Profile</MenuItem>
             <MenuItem onClick={handleLibraryClick}>My Library</MenuItem>
-            <MenuItem onClick={handleLogoutClick}>Logout</MenuItem>
+            <MenuItem onClick={handleLogoutClick}>Signup</MenuItem>
+            <MenuItem onClick={handleLoginClick}>Login</MenuItem>
           </Menu>
         </Box>
       </Toolbar>
