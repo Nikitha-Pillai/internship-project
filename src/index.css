@@ -13,15 +13,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Home.css */
 
-/* Body and HTML styles */
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
+
   overflow-y: auto;
-  background-color: #ffffff; /* Default background color for home page */
+  background-color: #ffffff; 
 }
 
 
@@ -54,7 +52,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  color: #fff7f7;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -75,6 +73,6 @@ button:focus-visible {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #3f5ee8;
   }
 }
