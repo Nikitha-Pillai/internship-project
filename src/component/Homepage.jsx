@@ -3,9 +3,9 @@ import { Card, Box, CardContent, Typography, Button, IconButton, CardMedia } fro
 import { Favorite as FavoriteIcon } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 
-import bannerImage1 from '../assets/banner1.png'; // Ensure this path is correct
-import bannerImage2 from '../assets/banner2.png'; // Ensure this path is correct
-import bannerImage3 from '../assets/banner3.png'; // Ensure this path is correct
+import bannerImage1 from '../assets/banner1.png'; 
+import bannerImage2 from '../assets/banner2.png'; 
+import bannerImage3 from '../assets/banner3.png'; 
 
 const Homepage = () => {
   const [isFavorited, setIsFavorited] = useState(false);
@@ -30,7 +30,7 @@ const Homepage = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setBannerIndex((prevIndex) => (prevIndex + 1) % bannerImages.length);
-    }, 5000); // 5000 milliseconds = 5 seconds
+    }, 5000); 
 
     return () => clearInterval(interval);
   }, []);

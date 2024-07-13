@@ -107,7 +107,7 @@ const SignUp = () => {
             />
           </div>
 
-          <div className="form-group">
+          <div className="form-group checkbox-group">
             <label htmlFor="terms">
               <input
                 type="checkbox"
@@ -120,7 +120,9 @@ const SignUp = () => {
             </label>
           </div>
 
-          <button type="submit">Sign Up</button>
+          <div className="form-group">
+            <button type="submit">Sign Up</button>
+          </div>
         </form>
       </div>
     </div>

@@ -2,6 +2,7 @@
 .login-body {
     margin: 0;
     padding: 0;
+    width: 100vw;
     height: 100vh; /* Full viewport height */
     overflow-y: auto; /* Allow vertical scrolling */
     background-image: url('https://media.istockphoto.com/id/1816810090/photo/3d-rendering-magic-library.webp?b=1&s=170667a&w=0&k=20&c=R5_fGd9iA8aKWAU2eTuB2XJlvqhuYpiX8hI7b-gc6BU=');
@@ -18,7 +19,6 @@
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     max-width: 400px;
-    width: 100%;
     margin-top: 150px;
 }
 
@@ -39,7 +39,7 @@ h2 {
 
 .form-group {
     margin-bottom: 15px;
-    width: 100%;
+   
 }
 
 label {
@@ -54,7 +54,6 @@ input {
     border: 1px solid #ccc;
     border-radius: 5px;
     max-width: 300px; /* Adjust max-width to your preference */
-    text-align: left; /* Align input text to the left */
 }
 
 .loginbutton {
