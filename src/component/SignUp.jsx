@@ -25,7 +25,9 @@ const SignUp = () => {
   return (
     <div className="signup-body">
       <div className="signup-container">
+        <div className='login-h1'>
         <h1>Sign Up</h1>
+        </div>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="name">Name</label>
@@ -68,7 +70,7 @@ const SignUp = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="education"> Education </label>
+            <label htmlFor="education">Education</label>
             <input
               type="text"
               id="education"
@@ -78,7 +80,7 @@ const SignUp = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="contact">Address</label>
+            <label htmlFor="contact">Contact</label>
             <input
               type="text"
               id="contact"
@@ -97,32 +99,20 @@ const SignUp = () => {
             />
           </div>
 
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
+          <div className="checkbox-group">
             <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              type="checkbox"
+              id="terms"
+              name="terms"
+              checked={terms}
+              onChange={handleCheckboxChange}
             />
-          </div>
-
-          <div className="form-group checkbox-group">
-            <label htmlFor="terms">
-              <input
-                type="checkbox"
-                id="terms"
-                name="terms"
-                checked={terms}
-                onChange={handleCheckboxChange}
-              />
+            <label htmlFor="terms" className="terms-label">
               I agree to the terms and conditions (if book is not returned or damaged fine will be charged).
             </label>
           </div>
 
-          <div className="form-group">
-            <button type="submit">Sign Up</button>
-          </div>
+          <button type="submit">Sign Up</button>
         </form>
       </div>
     </div>

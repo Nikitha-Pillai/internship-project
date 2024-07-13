@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './Login.css';
 
 const Login = () => {
@@ -21,30 +20,36 @@ const Login = () => {
   return (
     <div className="login-body">
       <div className="login-container">
-        <form onSubmit={handleSubmit}>
-          <h2>Login</h2>
-          {error && <p className="error">{error}</p>}
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
+        <form className="login-form" onSubmit={handleSubmit}>
+          <h2 className="login-h2">Login</h2>
+          {error && <p className="login-error">{error}</p>}
+          <div className="login-form-group">
+            <div className="login-label">
+              <label htmlFor="email">Email</label>
+            </div>
             <input
               type="email"
               id="email"
+              className="login-input"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
+          <div className="login-form-group">
+            <div className="login-label">
+              <label htmlFor="password">Password</label>
+            </div>
             <input
               type="password"
               id="password"
+              className="login-input"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
           </div>
-          <button className="loginbutton" type="submit">Login</button>
+          <button className="login-button" type="submit">Login</button>
         </form>
       </div>
     </div>
