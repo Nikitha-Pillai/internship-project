@@ -1,89 +1,94 @@
 /* Login body styles */
 .login-body {
-    margin: 0;
-    padding: 0;
-    width: 100vw;
-    height: 100vh; /* Full viewport height */
-    overflow-y: auto; /* Allow vertical scrolling */
-    background-image: url('../assets/sigbg.png');
-    background-size: cover; /* Cover entire container */
-    display: flex;
-    justify-content: flex-end;
-    align-items: center; /* Center content vertically */
-  }
-  
-  /* Login container styles */
-  .login-container {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    min-width: 300px;
-    margin-top: 100px;
-    margin-right: 300px;
-  }
-  
-  /* Form styles */
-  .login-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center form items horizontally */
-  }
-  
-  /* Header styles */
-  .login-h2 {
-    margin-bottom: 30px;
-    color: black;
-    text-align: center;
-    font-weight: bold; /* Added bold font weight */
-  }
-  
-  /* Form group styles */
-  .login-form-group {
-    margin-bottom: 15px;
-    width: 100%;
-  }
-  
-  /* Label styles */
-  .login-label {
-    margin-bottom: 5px;
-    text-align: left; /* Align labels to the left */
-    color: black;
-  }
-  
-  /* Input styles */
-  .login-input {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    max-width: 300px; /* Adjust max-width to your preference */
-  }
-  
-  /* Button styles */
-  .login-button {
-    padding: 10px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 260px; /* Ensure button takes full width */
-    max-width: 300px; /* Adjust max-width to your preference */
-    margin-bottom: 15px;
-  }
-  
-  .login-button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Error message styles */
-  .login-error {
-    color: rgb(0, 0, 0);
-    margin-bottom: 10px;
-    text-align: center;
-    width: 100%; /* Ensure error message takes full width */
-    max-width: 300px; /* Adjust max-width to your preference */
-  }
-  
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh; /* Full viewport height */
+  overflow-y: auto; /* Allow vertical scrolling */
+  background-image: url('../assets/sigbg.png');
+  background-size: cover; /* Cover entire container */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center; /* Center content vertically */
+}
+
+/* Login container styles */
+.login-container {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  min-width: 300px;
+  margin-top: 100px;
+  margin-right: 300px;
+}
+
+/* Form styles */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center form items horizontally */
+  margin-right: 18px
+}
+
+/* Header styles */
+.login-h2 {
+  margin-bottom: 30px;
+  color: black;
+  text-align: center;
+  font-weight: bold; /* Added bold font weight */
+}
+
+/* Form group styles */
+.login-form-group {
+  margin-bottom: 15px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Label styles */
+.login-label {
+  margin-bottom: 5px;
+  text-align: left; /* Align labels to the left */
+  color: black;
+  margin-left: 30px;
+}
+
+/* Input styles */
+.login-input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  max-width: 300px; /* Adjust max-width to your preference */
+  margin-left: 28px;
+  width: calc(100% - 60px); /* Ensure input takes full width minus padding and border */
+}
+
+/* Button styles */
+.login-button {
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 15px;
+  min-width: 245px; /* Adjust max-width to your preference */
+  margin-top: 15px; /* Add margin-top to separate from inputs */
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+}
+
+/* Error message styles */
+.login-error {
+  color: rgb(0, 0, 0);
+  margin-bottom: 10px;
+  text-align: center;
+  width: 100%; /* Ensure error message takes full width */
+  max-width: 300px; /* Adjust max-width to your preference */
+}

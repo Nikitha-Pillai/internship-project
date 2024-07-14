@@ -22,12 +22,12 @@ export default function AccordionTransition() {
   };
 
   return (
-    <Box mt={6}> {/* Adjust margin-top as needed */}
+    <Box mt={20}> {/* Adjust margin-top as needed */}
       <Accordion
         expanded={expanded}
         onChange={handleExpansion}
-        slots={{ transition: Fade }}
-        slotProps={{ transition: { timeout: 400 } }}
+        TransitionComponent={Fade}
+        transitionDuration={400}
         sx={{
           '& .MuiAccordion-region': { height: expanded ? 'auto' : 0 },
           '& .MuiAccordionDetails-root': { display: expanded ? 'block' : 'none' },
@@ -37,6 +37,7 @@ export default function AccordionTransition() {
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1-content"
           id="panel1-header"
+          sx={{ mb: 2 }} // Adjust margin-bottom to bring the summary down
         >
           <Typography>Into the Book Details</Typography>
         </AccordionSummary>
@@ -53,7 +54,12 @@ export default function AccordionTransition() {
               name="book-rating"
               value={rating}
               onChange={(event, newValue) => setRating(newValue)}
-              sx={{ ml: 1 }}
+              sx={{ 
+                '& .MuiRating-icon': {
+                  fontSize: '1rem', // Adjust font-size to make stars smaller
+                  padding: '0 1px', // Adjust padding to make stars closer
+                }
+              }}
             />
           </Typography>
           <Button variant="contained" color="primary" onClick={handleRentClick} sx={{ mt: 2 }}>
@@ -66,8 +72,9 @@ export default function AccordionTransition() {
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel2-content"
           id="panel2-header"
+          sx={{ mt: 2 }} // Adjust margin-top to bring the summary down
         >
-          <Typography>Into the Author Details</Typography>
+          <Typography>Book Description</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography variant="h6">J.K. Rowling</Typography>

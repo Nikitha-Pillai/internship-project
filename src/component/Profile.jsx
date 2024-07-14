@@ -6,7 +6,7 @@ const Profile = () => {
     <Box
       component="form"
       sx={{
-        '& .MuiTextField-root': { m: 2, width: '35ch' },
+        '& .MuiTextField-root': { mt: 2, width: '35ch' },
         textAlign: 'center',
         mt: 4,
       }}
@@ -16,7 +16,7 @@ const Profile = () => {
       <Avatar
         alt="Profile Image"
         src="https://www.shutterstock.com/image-illustration/bright-portrait-cute-smiling-kawaii-260nw-2387969365.jpg" // Replace with your image source
-        sx={{ width: 100, height: 100, mx: 'auto', mb: 2, mt: 6 }}
+        sx={{ width: 100, height: 100, mx: 'auto', mb: 2, mt: 13 }}
       />
       <h2>Edit Profile</h2>
       <Divider sx={{ mb: 4 }} />

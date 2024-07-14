@@ -83,7 +83,7 @@ const Homepage = () => {
               <Typography variant="body1" color="text.secondary" component="div" sx={{ mt: 1 }}>
                 Status: {row.Status}
               </Typography>
-              <Button variant="contained" color="primary" onClick={() => handleRentClick(index)} sx={{ mt: 2, '&:focus': { outline: 'none' } }}>
+              <Button variant="contained" color="primary" onClick={() => handleRentClick(index)} sx={{ mt: 2, width: '200px', '&:focus': { outline: 'none' } }}>
                 See Details
               </Button>
               <Box sx={{ display: 'flex', alignItems: 'center', mt: 2 }}>
