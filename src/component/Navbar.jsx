@@ -17,32 +17,32 @@ const NavBar = () => {
   };
 
   const handleProfileClick = () => {
-    navigate('/edit'); // Navigate to Profile.jsx
+    navigate('/edit');
+    handleCloseUserMenu();
+  };
+
+  const handleHomeClick = () => {
+    navigate('/home');
     handleCloseUserMenu();
   };
 
   const handleLogoutClick = () => {
-    navigate('/signup'); // Navigate to Login.jsx
+    navigate('/login');
     handleCloseUserMenu();
   };
-  const handleLoginClick = () => {
-    navigate('/login'); // Navigate to Login.jsx
-    handleCloseUserMenu();
-  };
-
 
   const handleLibraryClick = () => {
-    navigate('/see');
+    navigate('/library');
     handleCloseUserMenu();
   };
 
   const handleBookIconClick = () => {
-    navigate('/');
+    navigate('/home');
   };
 
   return (
     <AppBar position="fixed" sx={{ backgroundColor: 'rgba(33, 33, 33, 0.8)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', zIndex: (theme) => theme.zIndex.drawer + 1 }}>
-      <Toolbar sx={{ minHeight: '64px', padding: '0' }}>
+      <Toolbar sx={{ minHeight: '64px', padding: '0', display: 'flex', justifyContent: 'space-between' }}>
         <IconButton
           edge="start"
           color="inherit"
@@ -54,26 +54,8 @@ const NavBar = () => {
         >
           <BookIcon />
         </IconButton>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1, marginLeft: '20px' }}>
-          Book Store Library 
-        </Typography>
+       
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <IconButton
-            edge="end"
-            color="inherit"
-            aria-label="account"
-            onClick={handleOpenUserMenu}
-            sx={{
-              '&:focus': { outline: 'none' }
-            }}
-          >
-            <Avatar
-              alt="Profile Image"
-              src="https://www.shutterstock.com/image-illustration/bright-portrait-cute-smiling-kawaii-260nw-2387969365.jpg" // Replace with your image source
-              sx={{ width: 32, height: 32 }}
-            />
-            <ArrowDropDownIcon />
-          </IconButton>
           <Menu
             id="user-menu"
             anchorEl={anchorElUser}
@@ -88,11 +70,28 @@ const NavBar = () => {
               horizontal: 'right',
             }}
           >
+            <MenuItem onClick={handleHomeClick}>Go Home</MenuItem>
             <MenuItem onClick={handleProfileClick}>My Profile</MenuItem>
             <MenuItem onClick={handleLibraryClick}>My Library</MenuItem>
-            <MenuItem onClick={handleLogoutClick}>Signup</MenuItem>
-            <MenuItem onClick={handleLoginClick}>Login</MenuItem>
+            <MenuItem onClick={handleLogoutClick}>Logout</MenuItem>
           </Menu>
+
+          <IconButton
+            edge="end"
+            color="inherit"
+            aria-label="account"
+            onClick={handleOpenUserMenu}
+            sx={{
+              '&:focus': { outline: 'none' }
+            }}
+          >
+            <ArrowDropDownIcon />
+            <Avatar
+              alt="Profile Image"
+              src="https://www.shutterstock.com/image-illustration/bright-portrait-cute-smiling-kawaii-260nw-2387969365.jpg" // Replace with your image source
+              sx={{ width: 32, height: 32, marginLeft: '8px' }}
+            />
+          </IconButton>
         </Box>
       </Toolbar>
     </AppBar>

@@ -21,8 +21,13 @@ export default function AccordionTransition() {
     console.log('Rent button clicked');
   };
 
+  // Scroll to top on component mount
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <Box mt={20}> {/* Adjust margin-top as needed */}
+    <Box mt={15}> {/* Adjust margin-top as needed */}
       <Accordion
         expanded={expanded}
         onChange={handleExpansion}

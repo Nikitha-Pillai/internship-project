@@ -8,7 +8,6 @@ import bannerImage2 from '../assets/banner2.png';
 import bannerImage3 from '../assets/banner3.png'; 
 
 const Homepage = () => {
-  const [isFavorited, setIsFavorited] = useState(false);
   const [bannerIndex, setBannerIndex] = useState(0);
   const navigate = useNavigate();
 
@@ -20,7 +19,7 @@ const Homepage = () => {
     { Book_name: 'Harry Potter', Author: 'JK Rowling', Status: 'Available', Image: 'https://m.media-amazon.com/images/I/81zeKRGCPpL._AC_UF894,1000_QL80_.jpg' },
     { Book_name: 'Harry Potter', Author: 'JK Rowling', Status: 'Available', Image: 'https://cdn.cultura.com/cdn-cgi/image/width=830/media/pim/9781408855713.jpg' },
     { Book_name: 'Harry Potter', Author: 'JK Rowling', Status: 'Available', Image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPuC0z61YgeoZWsYg1xVpXplHq80W14vzG8FLakimnxVo8lGtQRyQEDGKo6kuSPWhWgHU&usqp=CAU' },
-    { Book_name: 'Harry Potter', Author: 'JK Rowling', Status: 'Available', Image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0W4QZXV0HppRjfogZ01K2re2OpNSuFrslY6wQ0uswg1JvZ_nFsPDCrnPI-hGQZc025Fs&usqp=CAU' }
+    { Book_name: 'Harry Potter', Author: 'JK Rowling', Status: 'Available', Image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0W4QZXV0HppRjfogZ01K2re2OpNSuFrslY6wQ0uswg1JvZ_nFsPDCrnPI-hGQZc025Fs&usqp=CAU' },
   ];
 
   const [rows, setRows] = useState(initialRows);
@@ -30,21 +29,29 @@ const Homepage = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setBannerIndex((prevIndex) => (prevIndex + 1) % bannerImages.length);
-    }, 5000); 
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
 
+  // Function to handle favorite button click for a specific index
+  const handleFavoriteClick = (index) => {
+    setRows((prevRows) => {
+      const updatedRows = [...prevRows];
+      updatedRows[index] = {
+        ...updatedRows[index],
+        isFavorited: !updatedRows[index].isFavorited,
+      };
+      return updatedRows;
+    });
+  };
+
   const handleRentClick = (index) => {
     if (index === 0) {
-      navigate('/accordion-transition');
+      navigate('/accordion');
     } else {
       console.log('Rent button clicked for', rows[index].Book_name);
     }
-  };
-
-  const handleFavoriteClick = () => {
-    setIsFavorited(!isFavorited);
   };
 
   return (
@@ -92,8 +99,8 @@ const Homepage = () => {
                 </Typography>
                 <IconButton
                   aria-label="favorite"
-                  onClick={handleFavoriteClick}
-                  sx={{ color: isFavorited ? 'red' : 'inherit', '&:focus': { outline: 'none' } }}
+                  onClick={() => handleFavoriteClick(index)}
+                  sx={{ color: row.isFavorited ? 'red' : 'inherit', '&:focus': { outline: 'none' } }}
                 >
                   <FavoriteIcon />
                 </IconButton>

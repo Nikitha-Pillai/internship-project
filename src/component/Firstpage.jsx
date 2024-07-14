@@ -7,7 +7,7 @@ const Firstpage = () => {
   const navigate = useNavigate(); // Hook to navigate programmatically
 
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = ()=> {
       const position = window.scrollY;
       setScrollPosition(position);
     };
@@ -22,6 +22,9 @@ const Firstpage = () => {
   const handleLoginClick = () => {
     navigate('/login'); // Navigate to the Login page
   };
+  const handleSignupClick = () => {
+    navigate('/signup'); // Navigate to the Login page
+  };
 
   return (
     <div className="parallax-container">
@@ -34,7 +37,7 @@ const Firstpage = () => {
       <div className="dark-overlay" style={{ opacity: scrollPosition / window.innerHeight }}>
         <div className="overlay-text">
           <h2>Join us now and get access to unlimited books</h2>
-          <button>Sign Up</button>
+          <button onClick={handleSignupClick}>Sign Up</button>
           <button onClick={handleLoginClick}>Login</button> {/* Handle login button click */}
         </div>
       </div>
