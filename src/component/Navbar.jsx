@@ -1,11 +1,12 @@
 import React from 'react';
-import { AppBar, Toolbar, IconButton, Menu, MenuItem, Typography, Box, Avatar } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { AppBar, Toolbar, IconButton, Menu, MenuItem, Box, Avatar } from '@mui/material';
+import { useNavigate, useLocation } from 'react-router-dom';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import BookIcon from '@mui/icons-material/MenuBook';
 
 const NavBar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenUserMenu = (event) => {
@@ -37,8 +38,29 @@ const NavBar = () => {
   };
 
   const handleBookIconClick = () => {
-    navigate('/home');
+    if (adminPaths.includes(location.pathname)) {
+      navigate('/adminhome');
+    } else {
+      navigate('/home');
+    }
   };
+
+  const handleAddUserClick = () => {
+    navigate('/adduser');
+    handleCloseUserMenu();
+  };
+
+  const handleAddBooksClick = () => {
+    navigate('/addbook');
+    handleCloseUserMenu();
+  };
+
+  const handleAdminClick = () => {
+    navigate('/adminhome');
+    handleCloseUserMenu();
+  };
+
+  const adminPaths = ['/adminhome', '/adduser', '/addbook', '/manageuser', '/managebook'];
 
   return (
     <AppBar position="fixed" sx={{ backgroundColor: 'rgba(33, 33, 33, 0.8)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', zIndex: (theme) => theme.zIndex.drawer + 1 }}>
@@ -70,10 +92,21 @@ const NavBar = () => {
               horizontal: 'right',
             }}
           >
-            <MenuItem onClick={handleHomeClick}>Go Home</MenuItem>
-            <MenuItem onClick={handleProfileClick}>My Profile</MenuItem>
-            <MenuItem onClick={handleLibraryClick}>My Library</MenuItem>
-            <MenuItem onClick={handleLogoutClick}>Logout</MenuItem>
+            {adminPaths.includes(location.pathname) ? (
+              [
+                <MenuItem key="addUser" onClick={handleAddUserClick}>Add/Update User</MenuItem>,
+                <MenuItem key="addBooks" onClick={handleAddBooksClick}>Add/Update Books</MenuItem>,
+                <MenuItem key="admin" onClick={handleAdminClick}>Admin</MenuItem>,
+                <MenuItem key="logout" onClick={handleLogoutClick}>Logout</MenuItem>,
+              ]
+            ) : (
+              [
+                <MenuItem key="home" onClick={handleHomeClick}>Go Home</MenuItem>,
+                <MenuItem key="profile" onClick={handleProfileClick}>My Profile</MenuItem>,
+                <MenuItem key="library" onClick={handleLibraryClick}>My Library</MenuItem>,
+                <MenuItem key="logout" onClick={handleLogoutClick}>Logout</MenuItem>,
+              ]
+            )}
           </Menu>
 
           <IconButton

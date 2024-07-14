@@ -123,7 +123,7 @@ const SignUp = () => {
           <button type="submit" className="signup-button">Sign Up</button>
 
           <div className="signup-link">
-            <p>Already have an account? <Link to="/login">Login</Link></p>
+            <p>Already have an account? <Link to="/adminhome">Login</Link></p>
           </div>
         </form>
       </div>

@@ -9,6 +9,11 @@ import Login from './component/Login';
 import SignUp from './component/SignUp';
 import AccordionTransition from './component/AccordionTransition';
 import Firstpage from './component/Firstpage';
+import Adminhome from './component/Adminhome';
+import Adduser from './component/Adduser';
+import Addbook from './component/Addbook';
+import Manageuser from './component/Manageuser';
+import Managebook from './component/Managebook';
 
 const AppWrapper = () => {
   const location = useLocation();
@@ -26,6 +31,12 @@ const AppWrapper = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/accordion" element={<AccordionTransition />} />
+        <Route path="/adminhome" element={<Adminhome />} />
+        <Route path="/adduser" element={<Adduser />} />
+        <Route path="/addbook" element={<Addbook />} />
+        <Route path="/manageuser" element={<Manageuser/>} />
+        <Route path="/managebook" element={<Managebook/>} />
+
       </Routes>
     </div>
   );
