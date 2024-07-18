@@ -2,18 +2,18 @@ import React, { useState } from 'react';
 import './Login.css';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (email === 'admin@library.com' && password === 'password') {
+    if (username === 'admin' && password === 'password') {
       console.log('Logged in');
       setError('');
     } else {
-      setError('Invalid email or password');
+      setError('Invalid username or password');
     }
   };
 
@@ -25,14 +25,14 @@ const Login = () => {
           {error && <p className="login-error">{error}</p>}
           <div className="login-form-group">
             <div className="login-label">
-              <label htmlFor="email">Email</label>
+              <label htmlFor="username">Username</label>
             </div>
             <input
-              type="email"
-              id="email"
+              type="text"
+              id="username"
               className="login-input"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               required
             />
           </div>
