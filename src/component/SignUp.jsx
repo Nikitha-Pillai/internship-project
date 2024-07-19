@@ -10,13 +10,14 @@ const SignUp = () => {
   const [education, setEducation] = useState('');
   const [contact, setContact] = useState('');
   const [phone, setPhone] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [terms, setTerms] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic here
-    console.log('Form submitted:', { name, place, dob, email, education, contact, phone, password, terms });
+    console.log('Form submitted:', { name, place, dob, email, education, contact, phone, username, password, terms });
   };
 
   const handleCheckboxChange = (e) => {
@@ -103,6 +104,28 @@ const SignUp = () => {
               id="phone"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
+              className="signup-input"
+            />
+          </div>
+
+          <div className="signup-form-group">
+            <label htmlFor="username" className="signup-label">Username</label>
+            <input
+              type="text"
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="signup-input"
+            />
+          </div>
+
+          <div className="signup-form-group">
+            <label htmlFor="password" className="signup-label">Password</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="signup-input"
             />
           </div>
