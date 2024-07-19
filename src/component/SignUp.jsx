@@ -4,11 +4,10 @@ import './SignUp.css'; // Assuming you have custom styles in SignUp.css
 
 const SignUp = () => {
   const [name, setName] = useState('');
-  const [place, setPlace] = useState('');
-  const [dob, setDob] = useState('');
+  const [age, setAge] = useState('');
   const [email, setEmail] = useState('');
   const [education, setEducation] = useState('');
-  const [contact, setContact] = useState('');
+  const [address, setAddress] = useState('');
   const [phone, setPhone] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -17,7 +16,7 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic here
-    console.log('Form submitted:', { name, place, dob, email, education, contact, phone, username, password, terms });
+    console.log('Form submitted:', { name, age, email, education, address, phone, username, password, terms });
   };
 
   const handleCheckboxChange = (e) => {
@@ -43,23 +42,12 @@ const SignUp = () => {
           </div>
 
           <div className="signup-form-group">
-            <label htmlFor="place" className="signup-label">Place</label>
+            <label htmlFor="age" className="signup-label">Age</label>
             <input
               type="text"
-              id="place"
-              value={place}
-              onChange={(e) => setPlace(e.target.value)}
-              className="signup-input"
-            />
-          </div>
-
-          <div className="signup-form-group">
-            <label htmlFor="dob" className="signup-label">DOB</label>
-            <input
-              type="text"
-              id="dob"
-              value={dob}
-              onChange={(e) => setDob(e.target.value)}
+              id="age"
+              value={age}
+              onChange={(e) => setAge(e.target.value)}
               className="signup-input"
             />
           </div>
@@ -87,12 +75,12 @@ const SignUp = () => {
           </div>
 
           <div className="signup-form-group">
-            <label htmlFor="contact" className="signup-label">Contact</label>
+            <label htmlFor="address" className="signup-label">Address</label>
             <input
               type="text"
-              id="contact"
-              value={contact}
-              onChange={(e) => setContact(e.target.value)}
+              id="address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
               className="signup-input"
             />
           </div>

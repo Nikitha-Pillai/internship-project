@@ -38,17 +38,10 @@ const Profile = () => {
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
           <TextField
-            id="outlined-place"
-            label="Place"
-            fullWidth
-            variant="outlined"
-          />
-          <TextField
             id="outlined-education"
             label="Education"
             fullWidth
             variant="outlined"
-            sx={{ mt: 2 }}
           />
           <TextField
             id="outlined-address"
@@ -61,7 +54,7 @@ const Profile = () => {
         <Grid item xs={12} sm={6} md={4}>
           <TextField
             id="outlined-dob"
-            label="DOB"
+            label="Age"
             fullWidth
             variant="outlined"
           />

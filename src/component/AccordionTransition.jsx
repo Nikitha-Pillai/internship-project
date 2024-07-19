@@ -8,17 +8,31 @@ import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
 export default function AccordionTransition() {
   const [expanded, setExpanded] = React.useState(false);
   const [rating, setRating] = React.useState(0);
+  const [comments, setComments] = React.useState([]);
+  const [newComment, setNewComment] = React.useState('');
 
-  const handleExpansion = () => {
-    setExpanded((prevExpanded) => !prevExpanded);
+  const handleExpansion = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
   };
 
   const handleRentClick = () => {
     console.log('Rent button clicked');
+  };
+
+  const handleCommentChange = (event) => {
+    setNewComment(event.target.value);
+  };
+
+  const handleAddComment = () => {
+    if (newComment.trim()) {
+      setComments([...comments, newComment]);
+      setNewComment('');
+    }
   };
 
   // Scroll to top on component mount
@@ -29,13 +43,13 @@ export default function AccordionTransition() {
   return (
     <Box mt={15}> {/* Adjust margin-top as needed */}
       <Accordion
-        expanded={expanded}
-        onChange={handleExpansion}
+        expanded={expanded === 'panel1'}
+        onChange={handleExpansion('panel1')}
         TransitionComponent={Fade}
         transitionDuration={400}
         sx={{
-          '& .MuiAccordion-region': { height: expanded ? 'auto' : 0 },
-          '& .MuiAccordionDetails-root': { display: expanded ? 'block' : 'none' },
+          '& .MuiAccordion-region': { height: expanded === 'panel1' ? 'auto' : 0 },
+          '& .MuiAccordionDetails-root': { display: expanded === 'panel1' ? 'block' : 'none' },
         }}
       >
         <AccordionSummary
@@ -72,12 +86,17 @@ export default function AccordionTransition() {
           </Button>
         </AccordionDetails>
       </Accordion>
-      <Accordion>
+      <Accordion
+        expanded={expanded === 'panel2'}
+        onChange={handleExpansion('panel2')}
+        TransitionComponent={Fade}
+        transitionDuration={400}
+        sx={{ mt: 2 }} // Adjust margin-top to bring the summary down
+      >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel2-content"
           id="panel2-header"
-          sx={{ mt: 2 }} // Adjust margin-top to bring the summary down
         >
           <Typography>Book Description</Typography>
         </AccordionSummary>
@@ -88,6 +107,48 @@ export default function AccordionTransition() {
             Harry Potter series (seven books published between 1997 and 2007),
             about a lonely orphan who discovers that he is actually a wizard and enrolls in the Hogwarts School of Witchcraft and Wizardry.
           </Typography>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion
+        expanded={expanded === 'panel3'}
+        onChange={handleExpansion('panel3')}
+        TransitionComponent={Fade}
+        transitionDuration={400}
+        sx={{ mt: 2 }} // Adjust margin-top to bring the summary down
+      >
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel3-content"
+          id="panel3-header"
+        >
+          <Typography>Comments</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Box sx={{ mb: 2 }}>
+            <TextField
+              label="Add a comment"
+              multiline
+              rows={4}
+              fullWidth
+              value={newComment}
+              onChange={handleCommentChange}
+              sx={{ mb: 1 }}
+            />
+            <Button variant="contained" color="primary" onClick={handleAddComment}>
+              Add Comment
+            </Button>
+          </Box>
+          <Box>
+            {comments.length === 0 ? (
+              <Typography>No comments yet</Typography>
+            ) : (
+              comments.map((comment, index) => (
+                <Typography key={index} sx={{ mt: 1 }}>
+                  {comment}
+                </Typography>
+              ))
+            )}
+          </Box>
         </AccordionDetails>
       </Accordion>
     </Box>
