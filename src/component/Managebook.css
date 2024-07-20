@@ -1,0 +1,47 @@
+.manage-books {
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.manage-books h2 {
+    font-size: 34px; /* Increase the font size */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.manage-books table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+.manage-books th,
+.manage-books td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.manage-books th {
+    font-weight: bold;
+    background-color: transparent; /* Remove grey color from the header */
+}
+
+.manage-books tr:nth-child(even) {
+    background-color: transparent; /* Remove alternate grey color from rows */
+}
+
+.manage-books tr:hover {
+    background-color: #f1f1f1; /* Optional: Light grey background on hover */
+}
+
+/* Adjust column widths */
+.manage-books th:nth-child(5),
+.manage-books td:nth-child(5) {
+    width: 120px; /* Adjust as needed */
+}
+
+.manage-books th:nth-child(6),
+.manage-books td:nth-child(6) {
+    width: 120px; /* Adjust as needed */
+}
