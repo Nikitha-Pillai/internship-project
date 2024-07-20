@@ -11,13 +11,23 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
 export default function AccordionTransition() {
-  const [expanded, setExpanded] = React.useState(false);
+  const [expandedPanel1, setExpandedPanel1] = React.useState(false);
+  const [expandedPanel2, setExpandedPanel2] = React.useState(false);
+  const [expandedPanel3, setExpandedPanel3] = React.useState(false);
   const [rating, setRating] = React.useState(0);
   const [comments, setComments] = React.useState([]);
   const [newComment, setNewComment] = React.useState('');
+  const [isEditing, setIsEditing] = React.useState(false);
+  const [editingIndex, setEditingIndex] = React.useState(-1);
 
   const handleExpansion = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
+    if (panel === 'panel1') {
+      setExpandedPanel1(isExpanded);
+    } else if (panel === 'panel2') {
+      setExpandedPanel2(isExpanded);
+    } else if (panel === 'panel3') {
+      setExpandedPanel3(isExpanded);
+    }
   };
 
   const handleRentClick = () => {
@@ -30,9 +40,24 @@ export default function AccordionTransition() {
 
   const handleAddComment = () => {
     if (newComment.trim()) {
-      setComments([...comments, newComment]);
+      if (isEditing) {
+        const updatedComments = comments.map((comment, index) =>
+          index === editingIndex ? newComment : comment
+        );
+        setComments(updatedComments);
+        setIsEditing(false);
+        setEditingIndex(-1);
+      } else {
+        setComments([...comments, newComment]);
+      }
       setNewComment('');
     }
+  };
+
+  const handleEditComment = (index) => {
+    setNewComment(comments[index]);
+    setIsEditing(true);
+    setEditingIndex(index);
   };
 
   // Scroll to top on component mount
@@ -40,27 +65,25 @@ export default function AccordionTransition() {
     window.scrollTo(0, 0);
   }, []);
 
+  const accordionSummaryHeight = '60px'; // Set height for uniformity
+
   return (
     <Box mt={15}> {/* Adjust margin-top as needed */}
       <Accordion
-        expanded={expanded === 'panel1'}
+        expanded={expandedPanel1}
         onChange={handleExpansion('panel1')}
         TransitionComponent={Fade}
         transitionDuration={400}
-        sx={{
-          '& .MuiAccordion-region': { height: expanded === 'panel1' ? 'auto' : 0 },
-          '& .MuiAccordionDetails-root': { display: expanded === 'panel1' ? 'block' : 'none' },
-        }}
       >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1-content"
           id="panel1-header"
-          sx={{ mb: 2 }} // Adjust margin-bottom to bring the summary down
+          sx={{ mb: 2, height: accordionSummaryHeight }}
         >
           <Typography>Into the Book Details</Typography>
         </AccordionSummary>
-        <AccordionDetails>
+        <AccordionDetails sx={{ height: expandedPanel1 ? 'auto' : accordionSummaryHeight }}>
           <Typography variant="h6">Harry Potter and the Chamber of Secrets</Typography>
           <Typography variant="subtitle1">Author: J.K. Rowling</Typography>
           <Typography variant="body2">ISBN: 978-0439064873</Typography>
@@ -87,7 +110,7 @@ export default function AccordionTransition() {
         </AccordionDetails>
       </Accordion>
       <Accordion
-        expanded={expanded === 'panel2'}
+        expanded={expandedPanel2}
         onChange={handleExpansion('panel2')}
         TransitionComponent={Fade}
         transitionDuration={400}
@@ -97,10 +120,11 @@ export default function AccordionTransition() {
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel2-content"
           id="panel2-header"
+          sx={{ height: accordionSummaryHeight }}
         >
           <Typography>Book Description</Typography>
         </AccordionSummary>
-        <AccordionDetails>
+        <AccordionDetails sx={{ height: expandedPanel2 ? 'auto' : accordionSummaryHeight }}>
           <Typography variant="h6">J.K. Rowling</Typography>
           <Typography variant="body2">
             J.K. Rowling is the British author who created the popular and critically acclaimed
@@ -110,7 +134,7 @@ export default function AccordionTransition() {
         </AccordionDetails>
       </Accordion>
       <Accordion
-        expanded={expanded === 'panel3'}
+        expanded={expandedPanel3}
         onChange={handleExpansion('panel3')}
         TransitionComponent={Fade}
         transitionDuration={400}
@@ -120,33 +144,58 @@ export default function AccordionTransition() {
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel3-content"
           id="panel3-header"
+          sx={{ height: accordionSummaryHeight }}
         >
           <Typography>Comments</Typography>
         </AccordionSummary>
-        <AccordionDetails>
+        <AccordionDetails sx={{ height: expandedPanel3 ? 'auto' : accordionSummaryHeight }}>
           <Box sx={{ mb: 2 }}>
-            <TextField
-              label="Add a comment"
-              multiline
-              rows={4}
-              fullWidth
-              value={newComment}
-              onChange={handleCommentChange}
-              sx={{ mb: 1 }}
-            />
-            <Button variant="contained" color="primary" onClick={handleAddComment}>
-              Add Comment
-            </Button>
-          </Box>
-          <Box>
-            {comments.length === 0 ? (
-              <Typography>No comments yet</Typography>
-            ) : (
-              comments.map((comment, index) => (
-                <Typography key={index} sx={{ mt: 1 }}>
-                  {comment}
-                </Typography>
-              ))
+            {!isEditing && comments.length === 0 && (
+              <>
+                <TextField
+                  label="Add a comment"
+                  multiline
+                  rows={4}
+                  fullWidth
+                  value={newComment}
+                  onChange={handleCommentChange}
+                  sx={{ mb: 1 }}
+                />
+                <Button variant="contained" color="primary" onClick={handleAddComment} sx={{ width: '200px' }}>
+                  Add Comment
+                </Button>
+              </>
+            )}
+            {comments.length > 0 && (
+              <Box>
+                {comments.map((comment, index) => (
+                  <Box key={index} sx={{ mt: 1 }}>
+                    {isEditing && editingIndex === index ? (
+                      <>
+                        <TextField
+                          label="Edit comment"
+                          multiline
+                          rows={4}
+                          fullWidth
+                          value={newComment}
+                          onChange={handleCommentChange}
+                          sx={{ mb: 1 }}
+                        />
+                        <Button variant="contained" color="primary" onClick={handleAddComment} sx={{ width: '200px', mt: 1 }}>
+                          Save
+                        </Button>
+                      </>
+                    ) : (
+                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        <Typography>{comment}</Typography>
+                        <Button onClick={() => handleEditComment(index)} sx={{ ml: 2 }}>
+                          Edit
+                        </Button>
+                      </Box>
+                    )}
+                  </Box>
+                ))}
+              </Box>
             )}
           </Box>
         </AccordionDetails>
