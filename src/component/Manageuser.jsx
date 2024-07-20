@@ -89,7 +89,7 @@ const Manageuser = () => {
                               variant="contained"
                               color="primary"
                               onClick={() => handleBlockUser(row.userid, row.fineAmount)}
-                              disabled={row.fineAmount !== 0} // Disable button if fineAmount is not 0
+                              disabled={row.fineAmount !== 0} 
                             >
                               Block
                             </Button>

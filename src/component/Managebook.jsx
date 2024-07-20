@@ -106,7 +106,7 @@ const Managebook = () => {
                                         <span>
                                             <Button 
                                                 variant="contained"
-                                                style={{ backgroundColor: '#e0e0e0', color: '#b0b0b0' }} // Disabled color
+                                                style={{ backgroundColor: '#e0e0e0', color: '#b0b0b0' }} 
                                                 disabled
                                             >
                                                 Delete

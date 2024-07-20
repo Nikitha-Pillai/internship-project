@@ -43,5 +43,5 @@
 
 .manage-books th:nth-child(6),
 .manage-books td:nth-child(6) {
-    width: 120px; /* Adjust as needed */
+    width: 120px; 
 }
